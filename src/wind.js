@@ -8,15 +8,22 @@ export class Wind{
   
   constructor(http){
     this.heading = 'Wind';
-    this.readings = ['20', '30'];
+    this.readings = [{ speed:'20', gust:'30', direction:'SW'}, { speed:'22', gust:'33', direction:'SW'}];
     this.http = http;
   }
-
   
-  canDeactivate(){
-    return confirm('Are you sure you want to leave?');
-  }
 }
+
+export class ReadingData
+{
+	constructor(speed, gust, direction)
+	{
+		this.speed = speed;
+		this.gust = gust;
+		this.direction = durection
+	}
+}
+
 
 
 
