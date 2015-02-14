@@ -1,5 +1,10 @@
 <template>
   <section>
-       <div>Hello World</div>
+      <h2>Heading: ${heading}</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-3" repeat.for="reading of readings">
+          <label>Speed:</label><span>${reading}</span>
+        </div>
+      </div>
   </section>
 </template>
