@@ -1,0 +1,30 @@
+import {WindReadingService} from '../../src/services/wind-reading-service';
+
+
+
+describe('the App module', () => {
+  var service;
+  service = new WindReadingService();
+  var data = service.readings();
+ // beforeEach(() => { sut = new App(new RouterStub()); });
+
+  it('contains a service object', () => {
+    expect(service).toBeDefined(); 
+  });
+
+  it('contains data', () => {
+   // expect(data).toBeDefined(); 
+   expect(data).toBeDefined(); 
+  });
+  
+  it('contains 5 records in the readings', () => {
+   // expect(data).toBeDefined(); 
+   expect(data.length).toEqual(5) ;
+  });
+
+it('contains id 1 in first item', () => {
+   // expect(data).toBeDefined(); 
+   expect(data[0].id).toEqual(1) ;
+  });
+ 
+  });
