@@ -1,10 +1,10 @@
-import {WindReadingService} from '../../src/services/wind-reading-service';
+import {WindService} from '../../src/services/wind-service';
 
 
 
 describe('the App module', () => {
   var service;
-  service = new WindReadingService();
+  service = new WindService();
   var data = service.readings();
  // beforeEach(() => { sut = new App(new RouterStub()); });
 

@@ -1,9 +1,11 @@
-System.register(["aurelia-http-client"], function (_export) {
+System.register(["./services/wind-service", "aurelia-http-client"], function (_export) {
   "use strict";
 
-  var HttpClient, _prototypeProperties, _classCallCheck, url, Wind;
+  var WindService, HttpClient, _prototypeProperties, _classCallCheck, url, Wind;
   return {
-    setters: [function (_aureliaHttpClient) {
+    setters: [function (_servicesWindService) {
+      WindService = _servicesWindService.WindService;
+    }, function (_aureliaHttpClient) {
       HttpClient = _aureliaHttpClient.HttpClient;
     }],
     execute: function () {
@@ -17,11 +19,8 @@ System.register(["aurelia-http-client"], function (_export) {
           _classCallCheck(this, Wind);
 
           this.heading = "Wind";
-
-
           this.readings = [];
-          this.http = http;
-          this.http.defaultRequestHeaders.add("Access-Control-Allow-Origin", "*");
+          this.service = new WindService();
         }
 
         _prototypeProperties(Wind, {
@@ -35,10 +34,7 @@ System.register(["aurelia-http-client"], function (_export) {
         }, {
           activate: {
             value: function activate() {
-              var _this = this;
-              return this.http.get(url).then(function (response) {
-                _this.readings = response.content.data;
-              });
+              this.readings = this.service.readings();
             },
             writable: true,
             configurable: true
@@ -50,4 +46,4 @@ System.register(["aurelia-http-client"], function (_export) {
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndpbmQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O01BQ1EsVUFBVSx5Q0FHZCxHQUFHLEVBRU0sSUFBSTs7O0FBTFQsZ0JBQVUsc0JBQVYsVUFBVTs7Ozs7OztBQUdkLFNBQUcsR0FBRyxxTUFBcU07QUFFbE0sVUFBSTtBQUVKLGlCQUZBLElBQUksQ0FFSCxJQUFJO2dDQUZMLElBQUk7O0FBR2IsY0FBSSxDQUFDLE9BQU8sR0FBRyxNQUFNLENBQUM7OztBQUd0QixjQUFJLENBQUMsUUFBUSxHQUFJLEVBQUUsQ0FBQztBQUNwQixjQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztBQUNqQixjQUFJLENBQUMsSUFBSSxDQUFDLHFCQUFxQixDQUFDLEdBQUcsQ0FBQyw2QkFBNkIsRUFBQyxHQUFHLENBQUMsQ0FBQztTQUN4RTs7NkJBVFUsSUFBSTtBQUNSLGdCQUFNO21CQUFBLGtCQUFHO0FBQUUscUJBQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQzthQUFFOzs7OztBQVV4QyxrQkFBUTttQkFBQSxvQkFBRTs7QUFDUixxQkFBTyxJQUFJLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQSxRQUFRLEVBQUk7QUFDekMsc0JBQUssUUFBUSxHQUFHLFFBQVEsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDO2VBQ3ZDLENBQUMsQ0FBQzthQUNKOzs7Ozs7ZUFmVSxJQUFJIiwiZmlsZSI6IndpbmQuanMiLCJzb3VyY2VSb290IjoiL3NyYy8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndpbmQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O01BQVEsV0FBVyxFQUNYLFVBQVUseUNBR2QsR0FBRyxFQUVNLElBQUk7OztBQU5ULGlCQUFXLHdCQUFYLFdBQVc7O0FBQ1gsZ0JBQVUsc0JBQVYsVUFBVTs7Ozs7OztBQUdkLFNBQUcsR0FBRyxxTUFBcU07QUFFbE0sVUFBSTtBQUVKLGlCQUZBLElBQUksQ0FFSCxJQUFJO2dDQUZMLElBQUk7O0FBR2IsY0FBSSxDQUFDLE9BQU8sR0FBRyxNQUFNLENBQUM7QUFDckIsY0FBSSxDQUFDLFFBQVEsR0FBSSxFQUFFLENBQUM7QUFDckIsY0FBSSxDQUFDLE9BQU8sR0FBRyxJQUFJLFdBQVcsRUFBRSxDQUFDO1NBQ2xDOzs2QkFOVSxJQUFJO0FBQ1IsZ0JBQU07bUJBQUEsa0JBQUc7QUFBRSxxQkFBTyxDQUFDLFVBQVUsQ0FBQyxDQUFDO2FBQUU7Ozs7O0FBT3hDLGtCQUFRO21CQUFBLG9CQUFFO0FBRVAsa0JBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLE9BQU8sQ0FBQyxRQUFRLEVBQUUsQ0FBQzthQUN4Qzs7Ozs7O2VBWFEsSUFBSSIsImZpbGUiOiJ3aW5kLmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=

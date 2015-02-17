@@ -1,4 +1,4 @@
-
+import {WindService} from './services/wind-service';
 import {HttpClient} from 'aurelia-http-client';
 
 
@@ -8,18 +8,15 @@ export class Wind{
   static inject() { return [HttpClient]; }
   constructor(http){
     this.heading = 'Wind';
-     
-      
-    this.readings =  [];
-    this.http = http;
-    this.http.defaultRequestHeaders.add('Access-Control-Allow-Origin','*');
+     this.readings =  [];
+    this.service = new WindService();
   }
 
   activate(){
-    return this.http.get(url).then(response => {
-      this.readings = response.content.data;
-    });
-  }
+     
+     this.readings = this.service.readings();
+    }
+
   
 }
 
