@@ -1,3 +1,4 @@
+/*
 var karma = require('gulp-karma');
  
 var testFiles = [
@@ -19,3 +20,4 @@ gulp.task('test', function() {
       throw err;
     });
 });
+*/
