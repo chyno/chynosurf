@@ -1,6 +1,5 @@
 import {WindService} from './services/wind-service';
-import {HttpClient} from 'aurelia-http-client';
-
+ 
 
 
 export class Wind{
@@ -16,9 +15,7 @@ export class Wind{
   this.service.readings().then(data => {
       this.readings = data;
     });
-  }
-
-  
+  }  
 }
 
 

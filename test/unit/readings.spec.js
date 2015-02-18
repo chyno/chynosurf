@@ -2,12 +2,15 @@ import {WindService} from '../../src/services/wind-service';
 
 
 
-describe('the App module', () => {
+describe('the App module', (done) => {
   var service;
   service = new WindService();
-  var data = service.readings();
+  var data;
+  service.readings().then(d => {
+    this.data = d;
+  });
  // beforeEach(() => { sut = new App(new RouterStub()); });
-
+   done();
   it('contains a service object', () => {
     expect(service).toBeDefined(); 
   });
