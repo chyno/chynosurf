@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  
 /*
 {"metadata":{"id":"8454000","name":"Providence","lat":"41.8071","lon":"-71.4012"}, 
@@ -14,4 +15,31 @@ export class Wind {
   }
 }
  
+=======
+import {WindService} from './services/wind-service';
+ 
+
+
+export class Wind{
+  static inject() { return [HttpClient]; }
+  constructor(http){
+    this.heading = 'Wind';
+     this.readings =  [];
+    this.service = new WindService();
+  }
+
+  activate(){
+     
+  this.service.readings().then(data => {
+      this.readings = data;
+    });
+  }  
+}
+
+
+
+   
+
+    
+>>>>>>> e8a8bfb87083cba561f5989bc365a0c95c29de07
 
