@@ -1,7 +1,7 @@
 System.register([], function (_export) {
   "use strict";
 
-  var _prototypeProperties, _classCallCheck, WindService;
+  var _prototypeProperties, _classCallCheck, url, WindService;
   return {
     setters: [],
     execute: function () {
@@ -9,6 +9,7 @@ System.register([], function (_export) {
 
       _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
+      url = "http://tidesandcurrents.noaa.gov/api/datagetter?begin_date=20130808%2015:00&end_date=20130808%2015:06&station=8454000&product=wind&units=english&time_zone=gmt&application=ports_screen&format=json";
       WindService = _export("WindService", (function () {
         function WindService() {
           _classCallCheck(this, WindService);
@@ -17,14 +18,16 @@ System.register([], function (_export) {
         _prototypeProperties(WindService, null, {
           readings: {
             value: function readings() {
-              return [1, 2, 3, 4, 5].map(function (id) {
-                return {
-                  id: id,
-                  speed: "20",
-                  direction: "SW",
-                  gusts: "30"
-
-                };
+              return new Promise(function (resolve, reject) {
+                var res = [1, 2, 3, 4, 5].map(function (id) {
+                  return {
+                    id: id,
+                    speed: "20",
+                    direction: "SW",
+                    gusts: "30"
+                  };
+                });
+                resolve(res);
               });
             },
             writable: true,
@@ -37,4 +40,4 @@ System.register([], function (_export) {
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3dpbmQtc2VydmljZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7NkNBQWEsV0FBVzs7Ozs7Ozs7QUFBWCxpQkFBVztpQkFBWCxXQUFXO2dDQUFYLFdBQVc7Ozs2QkFBWCxXQUFXO0FBRXZCLGtCQUFRO21CQUFBLG9CQUNSO0FBQ0MscUJBQU8sQ0FBQyxDQUFDLEVBQUMsQ0FBQyxFQUFDLENBQUMsRUFBQyxDQUFDLEVBQUMsQ0FBQyxDQUFDLENBQUMsR0FBRyxDQUFDLFVBQUEsRUFBRSxFQUFJO0FBQzVCLHVCQUFPO0FBQ04sb0JBQUUsRUFBRyxFQUFFO0FBQ1AsdUJBQUssRUFBRyxJQUFJO0FBQ1osMkJBQVMsRUFBRyxJQUFJO0FBQ2hCLHVCQUFLLEVBQUcsSUFBSTs7aUJBRVosQ0FBQTtlQUVELENBQUMsQ0FBQzthQUVIOzs7Ozs7ZUFmVyxXQUFXIiwiZmlsZSI6InNlcnZpY2VzL3dpbmQtc2VydmljZS5qcyIsInNvdXJjZVJvb3QiOiIvc3JjLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3dpbmQtc2VydmljZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7NkNBQUksR0FBRyxFQUVNLFdBQVc7Ozs7Ozs7O0FBRnBCLFNBQUcsR0FBRyxxTUFBcU07QUFFbE0saUJBQVc7aUJBQVgsV0FBVztnQ0FBWCxXQUFXOzs7NkJBQVgsV0FBVztBQUV2QixrQkFBUTttQkFBQSxvQkFDUjtBQUNDLHFCQUFPLElBQUksT0FBTyxDQUFDLFVBQVMsT0FBTyxFQUFFLE1BQU0sRUFBRTtBQUM1QyxvQkFBSSxHQUFHLEdBQUcsQ0FBQyxDQUFDLEVBQUMsQ0FBQyxFQUFDLENBQUMsRUFBQyxDQUFDLEVBQUMsQ0FBQyxDQUFDLENBQUMsR0FBRyxDQUFDLFVBQUEsRUFBRSxFQUFJO0FBQ2hDLHlCQUFPO0FBQ04sc0JBQUUsRUFBRyxFQUFFO0FBQ1AseUJBQUssRUFBRyxJQUFJO0FBQ1osNkJBQVMsRUFBRyxJQUFJO0FBQ2hCLHlCQUFLLEVBQUcsSUFBSTttQkFDWixDQUFBO2lCQUNHLENBQUMsQ0FBQztBQUNOLHVCQUFPLENBQUMsR0FBRyxDQUFDLENBQUM7ZUFDYixDQUFDLENBQUM7YUFDSDs7Ozs7O2VBZlcsV0FBVyIsImZpbGUiOiJzZXJ2aWNlcy93aW5kLXNlcnZpY2UuanMiLCJzb3VyY2VSb290IjoiL3NyYy8ifQ==
