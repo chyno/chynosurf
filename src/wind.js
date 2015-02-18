@@ -14,7 +14,7 @@ export class Wind{
 
   activate(){
      
-     this.readings = this.service.readings();
+     this.readings =  this.service.readings();
     }
 
   
