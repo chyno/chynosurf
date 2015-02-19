@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node dist/app.js"
+    "start": "gulp watch"
    },
   "name": "aurelia-skeleton-navigation",
   "version": "0.9.5",
