@@ -12,11 +12,11 @@
     "url": "https://github.com/aurelia/skeleton-navigation/issues"
   },
   "license": "MIT",
-  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "author": "John Chynoweth",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/aurelia/skeleton-navigation"
+    "url": " https://github.com/chyno/chynosurf"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.0",

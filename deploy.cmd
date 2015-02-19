@@ -23,7 +23,7 @@ setlocal enabledelayedexpansion
 SET ARTIFACTS=%~dp0%..\artifacts
 
 IF NOT DEFINED DEPLOYMENT_SOURCE (
-  SET DEPLOYMENT_SOURCE=%~dp0%.
+  SET DEPLOYMENT_SOURCE=%~dp0%\dist.
 )
 
 IF NOT DEFINED DEPLOYMENT_TARGET (
@@ -53,8 +53,9 @@ goto Deployment
 :: -----------------
 
 :SelectNodeVersion
-
+echo SelectNodeVersion
 IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
+   echo %DEFINED KUDU_SELECT_NODE_VERSION_CMD%
   :: The following are done only on Windows Azure Websites environment
   call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
   IF !ERRORLEVEL! NEQ 0 goto error
