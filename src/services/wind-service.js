@@ -12,8 +12,6 @@ export class WindService
 	readings()
 	{
 		// return this.http.get(url);
-		
-		
 		return new Promise(function(resolve, reject) {
 			var res = [1,2,3,4,5].map(id => {
 			return {
