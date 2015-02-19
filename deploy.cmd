@@ -23,8 +23,9 @@ setlocal enabledelayedexpansion
 SET ARTIFACTS=%~dp0%..\artifacts
 
 IF NOT DEFINED DEPLOYMENT_SOURCE (
-  SET DEPLOYMENT_SOURCE=%~dp0%\dist\.
+  SET DEPLOYMENT_SOURCE=%~dp0%
 )
+ 
 
 echo deployment source: %DEPLOYMENT_SOURCE%
 
@@ -57,11 +58,12 @@ goto Deployment
 :SelectNodeVersion
 echo  %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
 IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
-   echo %DEFINED KUDU_SELECT_NODE_VERSION_CMD%
+   echo DEFINED KUDU_SELECT_NODE_VERSION_CMD is defined
   :: The following are done only on Windows Azure Websites environment
   call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
   IF !ERRORLEVEL! NEQ 0 goto error
 
+  echo IF EXIST "%DEPLOYMENT_TEMP%\__nodeVersion.tmp" 
   IF EXIST "%DEPLOYMENT_TEMP%\__nodeVersion.tmp" (
     SET /p NODE_EXE=<"%DEPLOYMENT_TEMP%\__nodeVersion.tmp"
     IF !ERRORLEVEL! NEQ 0 goto error
@@ -75,10 +77,13 @@ IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
   IF NOT DEFINED NODE_EXE (
     SET NODE_EXE=node
   )
-
+  echo  NPM_CMD="!NODE_EXE!" "!NPM_JS_PATH!"
   SET NPM_CMD="!NODE_EXE!" "!NPM_JS_PATH!"
 ) ELSE (
+   echo ... in else
+   echo NPM_CMD=npm
   SET NPM_CMD=npm
+  echo NPM_CMD=npm
   SET NODE_EXE=node
 )
 
