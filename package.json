@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node dist/app.js"
+   },
   "name": "aurelia-skeleton-navigation",
   "version": "0.9.5",
   "description": "A starter kit for building a standard navigation-style app with Aurelia.",
