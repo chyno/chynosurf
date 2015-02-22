@@ -21,9 +21,14 @@ export class WindService
 				gusts : '30'
 			}
 		    });
-			resolve(res);
+
+		    if (res)
+		    	resolve(res)
+		    else
+				reject('could not get data');
 		});
 
 
 	}
 }
+
