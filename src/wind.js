@@ -20,10 +20,77 @@ import {WindService} from './services/wind-service';
       this.readings = data;
     });
 */
-    return $http(url).get().then(response =>
+    return chynohttp(url).get().then(response =>
       {
              console.log('response :' + response);
       });
-  }  
+  }
 }
+
+
+var chynohttp = function(url){
+ 
+  // A small example of object
+  var core = {
+    
+    // Method that performs the ajax request
+    ajax : function(method, url, args){
+      
+          // Establishing a promise in return
+          return new Promise(function(resolve, reject) {
+            
+            // Instantiates the XMLHttpRequest
+            var client = new XMLHttpRequest();
+            var uri = '';
+            if((args != undefined) && (method == 'POST' || method == 'PUT')) {
+              for (key in args) {
+                uri += encodeURIComponent(key) + '=' + encodeURIComponent(escape(args[key])) + '&';
+              }
+              client.open(method, url + '?' + uri, true);
+            } else {
+              client.open(method, url, true);
+            }
+            //client.defaults.useXDomain = true;
+            client.setRequestHeader("Host", "tidesandcurrents.noaa.gov");
+            client.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+            client.setRequestHeader('Access-Control-Allow-Methods', 'OPTIONS,GET,POST,PUT,DELETE');
+            client.setRequestHeader("Access-Control-Allow-Origin", "*");
+            client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            client.setRequestHeader("Cache-Control", "no-cache");
+            client.onreadystatechange = function(){
+              if(this.readyState == 4){
+                if(this.status == 200){
+                  // Performs the function "resolve" the case this.status is equal to 200
+                  resolve(JSON.parse(this.response));
+                } else{
+                  // Performs the function "reject" the case is different this.status 200
+                  reject({"error":this.statusText});
+                }
+              }
+            };
+            client.send(uri);
+            
+          });
+        }
+  };
+
+  // Adapter pattern
+  return {
+    'get' : function(args) {
+      return core.ajax('GET', url, args);
+    },
+    'post' : function(args) {
+      return core.ajax('POST', url, args);
+    },
+    'put' : function(args) {
+      return core.ajax('PUT', url, args);
+    },
+    'delete' : function(args) {
+      return core.ajax('DELETE', url, args);
+    }
+  };
+};
+// End A
+
+
 
