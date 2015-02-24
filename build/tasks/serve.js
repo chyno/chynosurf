@@ -1,6 +1,26 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
+//var browserSync = require('browser-sync');
+var express = require('express'), 
+     path   = require('path');
 
+gulp.task('serve', ['build'], function(done) {
+  var app = express();
+ 
+ var rootpath = path.join(__dirname, '../../.');
+
+ app.use(express.static(rootpath));
+ app.listen(9000);
+ console.log("Direcrotry Name: " + rootpath);
+
+
+ // app.set('views', path.join(__dirname, '/'));
+  app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+  });
+
+});
+
+/*
 gulp.task('serve', ['build'], function(done) {
   browserSync({
     open: false,
@@ -15,3 +35,4 @@ gulp.task('serve', ['build'], function(done) {
     }
   }, done);
 });
+*/
