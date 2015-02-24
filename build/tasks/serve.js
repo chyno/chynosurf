@@ -6,12 +6,10 @@ var express = require('express'),
 gulp.task('serve', ['build'], function(done) {
   var app = express();
  
- var rootpath = path.join(__dirname, '../../.');
+  var rootpath = path.join(__dirname, '../../.');
+  app.use(express.static(rootpath));
+  app.listen(9000);
 
- app.use(express.static(rootpath));
-
- if (process.env.NODE_ENV === 'development')
- { app.listen(9000);}
 
  console.log("Direcrotry Name: " + rootpath);
 
